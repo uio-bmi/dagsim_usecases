@@ -1,2 +1,2 @@
-dagsim
+git+https://github.com/uio-bmi/dagsim@main
 Pillow
