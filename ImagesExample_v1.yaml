@@ -6,7 +6,7 @@ graph:
       function: numpy.random.uniform(0, 1)
     U2:
       function: numpy.random.uniform
-      arguments:
+      kwargs:
         low: 0
         high: 1
     H:
@@ -14,7 +14,7 @@ graph:
     C:
       function: numpy.random.binomial(1, U2)
     V:
-      function: Ber(1, U1)
+      function: Ber(U1)
     R:
       function: BerExp(C, H, "H")
     Y:
