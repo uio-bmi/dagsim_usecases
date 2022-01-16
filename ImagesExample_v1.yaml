@@ -1,0 +1,29 @@
+graph:
+  name: Images
+  python_file: ImagesExample_v1.py
+  nodes:
+    U1:
+      function: numpy.random.uniform(0, 1)
+    U2:
+      function: numpy.random.uniform
+      arguments:
+        low: 0
+        high: 1
+    H:
+      function: numpy.random.binomial(n=1, p=U1)
+    C:
+      function: numpy.random.binomial(1, U2)
+    V:
+      function: Ber(1, U1)
+    R:
+      function: BerExp(C, H, "H")
+    Y:
+      function: BerExp(C, V, "V")
+    I:
+      function: drawImage(H, V, R, C)
+
+instructions:
+  simulation:
+    csv_name: Images_metadata
+    num_samples: 50
+    output_path: "./images"
