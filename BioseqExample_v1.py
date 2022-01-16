@@ -1,6 +1,6 @@
-import numpy
-import random
+import numpy.random
 from itertools import product
+import random
 
 BASE_SEQ_FN = "olga.txt"
 AIRR_SIZE = 10

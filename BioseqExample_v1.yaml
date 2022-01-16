@@ -1,11 +1,11 @@
 graph:
-  python_file: BioseqExample_v1
+  python_file: BioseqExample_v1.py
   name: bioseq
   nodes:
     disease:
       function: numpy.random.binomial(1, 0.5)
     age:
-      function: numpy.random.uniform(10,80)
+      function: numpy.random.randint(10,80)
     protocol:
       function: assign_protocol(disease)
     airr:
@@ -13,9 +13,7 @@ graph:
       observed: False
     kmer_vec:
       function: encode_kmers(airr)
-    #baseline_seqs:
-    #  function: read_olga_seq() #NB! Keeps state, so that every call reads next line
 instructions:
   simulation:
     num_samples: 50
-    csv_name: "BioseqExample_v1_yaml.csv"
+    csv_name: "BioseqExample_v1_yaml"
