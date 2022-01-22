@@ -1,9 +1,10 @@
+import numpy as np
 import numpy.random
 from itertools import product
 import random
 
-BASE_SEQ_FN = "olga.txt"
-AIRR_SIZE = 10
+BASE_SEQ_FN = "rep.txt"
+AIRR_SIZE = 1000
 
 
 def _get_olga_seq(protocol):
@@ -11,7 +12,7 @@ def _get_olga_seq(protocol):
         seq = line.strip()
         if len(seq) < 10:
             continue
-        if protocol == 1 and not seq.startswith("ASS"):
+        if protocol == 1 and not seq.startswith("CAS"):
             continue
         yield seq
 
@@ -36,7 +37,7 @@ def create_airr(disease, age, protocol):
 
 
 def _get_clono_size(age, max_left):
-    return min(numpy.random.lognormal((120 - age) / 20, 1.5), max_left)
+    return int(min(numpy.random.lognormal((120 - age) / 20, 1.5), max_left))
 
 
 def _get_signal():
@@ -44,14 +45,14 @@ def _get_signal():
 
 
 def encode_kmers(airr):
-    # alphabet = "ARNDCQEGHILKMFPOSUTWYVBZXJ"
-    seq = airr[0][0]
-    alphabet = "ACSTRDOG"
+    alphabet = "ARNDCQEGHILKMFPOSUTWYVBZXJ"
+    # alphabet = "ACSTRDOG"
     k = 3
     kmers = sorted(list([''.join(x) for x in product(*[alphabet] * k)]))
     counts = dict([(kmer, 0) for kmer in kmers])
-    for i in range(len(seq) - k + 1):
-        sub = seq[i:i + k]
-        counts[sub] += 1
+    for seq, _ in airr:
+        for i in range(len(seq) - k + 1):
+            sub = seq[i:i + k]
+            counts[sub] += 1
     occ_vector = [counts[kmer] for kmer in kmers]
     return occ_vector
