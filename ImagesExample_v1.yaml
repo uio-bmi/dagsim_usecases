@@ -1,14 +1,14 @@
 graph:
-  python_file: ImagesExample_v1.py
   nodes:
     U1: uniform(0, 1)
     U2: uniform
-    H: binomial(n=1, p=U1)
+    H: binomial(1, U1)
     C: binomial(1, U2)
     V: Ber(U1)
     R: BerExp(C, H, "H")
     Y: BerExp(C, V, "V")
     I: drawImage(H, V, R, C)
+  python_file: ImagesExample_v1.py
 
 instructions:
   simulation:

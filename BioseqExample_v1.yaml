@@ -1,5 +1,4 @@
 graph:
-  python_file: BioseqExample_v1.py
   nodes:
     Disease: binomial(1, 0.5)
     Age: randint(10,80)
@@ -8,6 +7,7 @@ graph:
       function: create_airr(Disease,Age,Protocol)
       observed: False
     kmerVec: encode_kmers(Airr)
+  python_file: BioseqExample_v1.py
 instructions:
   simulation:
     num_samples: 50
