@@ -39,7 +39,7 @@ def BerExp(C, Dnum, Dstr):
     return out
 
 
-def drawImage(H, V, R, C, output_path):
+def generateImage(H, V, R, C, output_path):
     image = np.zeros(shape=(256, 256))
     randInd = np.random.randint(low=1, high=10000)
     if H == 1:
