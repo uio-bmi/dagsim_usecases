@@ -7,8 +7,8 @@ graph:
       function: create_airr(Disease,Age,Protocol)
       observed: False
     kmerVec: encode_kmers(Airr)
-  python_file: BioseqExample_v1.py
+  python_file: BioseqExample.py
 instructions:
   simulation:
     num_samples: 50
-    csv_name: "BioseqExample_v1_yaml"
+    csv_name: "BioseqExample_yaml"

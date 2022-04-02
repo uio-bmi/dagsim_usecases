@@ -8,7 +8,7 @@ graph:
     R: BerExp(C, H, "H")
     Y: BerExp(C, V, "V")
     I: generateImage(H, V, R, C)
-  python_file: ImagesExample_v1.py
+  python_file: ImagesExample.py
 
 instructions:
   simulation:
