@@ -1,18 +1,13 @@
 graph:
   python_file: BioseqExample_v1.py
-  name: bioseq
   nodes:
-    Disease:
-      function: numpy.random.binomial(1, 0.5)
-    Age:
-      function: numpy.random.randint(10,80)
-    Protocol:
-      function: assign_protocol(Disease)
+    Disease: binomial(1, 0.5)
+    Age: randint(10,80)
+    Protocol: assign_protocol(Disease)
     Airr:
       function: create_airr(Disease,Age,Protocol)
       observed: False
-    kmerVec:
-      function: encode_kmers(Airr)
+    kmerVec: encode_kmers(Airr)
 instructions:
   simulation:
     num_samples: 50

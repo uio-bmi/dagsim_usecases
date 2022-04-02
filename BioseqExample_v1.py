@@ -7,6 +7,14 @@ BASE_SEQ_FN = "rep.txt"
 AIRR_SIZE = 1000
 
 
+def randint(*args, **kwargs):
+    return np.random.randint(*args, **kwargs)
+
+
+def binomial(*args, **kwargs):
+    return np.random.binomial(*args, **kwargs)
+
+
 def _get_olga_seq(protocol):
     for line in open(BASE_SEQ_FN):
         seq = line.strip()
