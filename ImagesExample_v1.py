@@ -2,6 +2,14 @@ import numpy as np
 from PIL import Image
 
 
+def uniform(*args, **kwargs):
+    return np.random.uniform(*args, **kwargs)
+
+
+def binomial(*args, **kwargs):
+    return np.random.binomial(*args, **kwargs)
+
+
 # https://newbedev.com/how-can-i-create-a-circular-mask-for-a-numpy-array
 
 def create_circular_mask(h=256, w=256, center=None, radius=10):
