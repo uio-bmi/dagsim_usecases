@@ -7,7 +7,7 @@ graph:
     V: Ber(U1)
     R: BerExp(C, H, "H")
     Y: BerExp(C, V, "V")
-    I: drawImage(H, V, R, C)
+    Image: drawImage(H, V, R, C)
   python_file: ImagesExample.py
 
 instructions:
