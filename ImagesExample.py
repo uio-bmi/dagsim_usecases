@@ -48,10 +48,7 @@ def drawImage(H, V, R, C, output_path):
         image[:, randPosV - 5:randPosV + 5] = 256
 
     if C == 1:
-        Cx = np.random.randint(low=10, high=246)  # x-coordinate of the center
-        Cy = np.random.randint(low=10, high=246)  # y-coordinate of the center
-
-        mask = create_circular_mask(center=(Cx, Cy))
+        mask = create_circular_mask()
         image = image + mask
 
     if R == 1:
