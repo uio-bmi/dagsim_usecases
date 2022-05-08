@@ -10,18 +10,14 @@ def binomial(*args, **kwargs):
     return np.random.binomial(*args, **kwargs)
 
 
-# https://newbedev.com/how-can-i-create-a-circular-mask-for-a-numpy-array
+def create_circular_mask():
+    randC1 = np.random.randint(low=10, high=246)
+    randC2 = np.random.randint(low=10, high=246)
 
-def create_circular_mask(h=256, w=256, center=None, radius=10):
-    if center is None:  # use the middle of the image
-        center = (int(w / 2), int(h / 2))
-    if radius is None:  # use the smallest distance between the center and image walls
-        radius = min(center[0], center[1], w - center[0], h - center[1])
+    Y, X = np.ogrid[:256, :256]
+    dist_from_center = np.sqrt((X - randC1) ** 2 + (Y - randC2) ** 2)
 
-    Y, X = np.ogrid[:h, :w]
-    dist_from_center = np.sqrt((X - center[0]) ** 2 + (Y - center[1]) ** 2)
-
-    mask = (dist_from_center <= radius) * 256
+    mask = (dist_from_center <= 10) * 256
     return mask
 
 
@@ -42,6 +38,7 @@ def BerExp(C, Dnum, Dstr):
 def drawImage(H, V, R, C, output_path):
     image = np.zeros(shape=(256, 256))
     randInd = np.random.randint(low=1, high=10000)
+    print(randInd)
     if H == 1:
         randPosH = np.random.randint(low=10, high=246)
         image[randPosH - 5:randPosH + 5, :] = 256
@@ -51,13 +48,24 @@ def drawImage(H, V, R, C, output_path):
         image[:, randPosV - 5:randPosV + 5] = 256
 
     if C == 1:
-        randC1 = np.random.randint(low=10, high=246)
-        randC2 = np.random.randint(low=10, high=246)
+        Cx = np.random.randint(low=10, high=246)  # x-coordinate of the center
+        Cy = np.random.randint(low=10, high=246)  # y-coordinate of the center
 
-        mask = create_circular_mask(center=(randC1, randC2))
+        mask = create_circular_mask(center=(Cx, Cy))
         image = image + mask
+
+    if R == 1:
+        print("entered")
+        TLy = np.random.randint(low=0, high=226)  # y-coordinate of the top-left corner
+        TLx = np.random.randint(low=0, high=206)  # x-coordinate of the top-left corner
+
+        image[TLy: TLy+30, TLx: TLx+50] = 256
 
     image = image + np.random.binomial(1, 0.005, size=(256, 256)) * 256
     image = Image.fromarray(image)
     image = image.convert("L")
     image.save(output_path + "/" + str(randInd) + ".png")
+
+
+if __name__ == "__main__":
+    drawImage(0, 0, 1, 0, ".")
