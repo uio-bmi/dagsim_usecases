@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import Image
+from PIL import Image as PILImage
 
 
 def uniform(*args, **kwargs):
@@ -38,7 +38,6 @@ def BerExp(C, Dnum, Dstr):
 def drawImage(H, V, R, C, output_path):
     image = np.zeros(shape=(256, 256))
     randInd = np.random.randint(low=1, high=10000)
-    print(randInd)
     if H == 1:
         randPosH = np.random.randint(low=10, high=246)
         image[randPosH - 5:randPosH + 5, :] = 256
@@ -52,14 +51,13 @@ def drawImage(H, V, R, C, output_path):
         image = image + mask
 
     if R == 1:
-        print("entered")
         TLy = np.random.randint(low=0, high=226)  # y-coordinate of the top-left corner
         TLx = np.random.randint(low=0, high=206)  # x-coordinate of the top-left corner
 
         image[TLy: TLy+30, TLx: TLx+50] = 256
 
     image = image + np.random.binomial(1, 0.005, size=(256, 256)) * 256
-    image = Image.fromarray(image)
+    image = PILImage.fromarray(image)
     image = image.convert("L")
     image.save(output_path + "/" + str(randInd) + ".png")
 
