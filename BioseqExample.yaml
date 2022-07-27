@@ -3,7 +3,7 @@ graph:
     Disease: binomial(1, 0.5)
     Age: randint(10,80)
     Protocol: assign_protocol(Disease)
-    Airr:
+    AIRR:
       function: create_airr(Disease, Age, Protocol)
       observed: False
     kmerVec: encode_kmers(AIRR)
