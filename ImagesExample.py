@@ -21,11 +21,11 @@ def create_circular_mask():
     return mask
 
 
-def Ber(U1):
+def complement_binomial(U1):
     return np.random.binomial(1, 1 - U1)
 
 
-def BerExp(C, Dnum, Dstr):
+def sigmoid_binomial(C, Dnum, Dstr):
     if Dstr == "H":
         out = 0.75 * Dnum + 0.5 * C + 0.25
     else:
